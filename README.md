@@ -6,8 +6,6 @@ Javie is a vanilla javascript version of my other vaidation project [Kavie](http
 
 ```html
 
-<script src="path/to/javie.js"></script>
-
 <input type="text" data-required />
 
 <input type="button" id="submit" />
