@@ -7,6 +7,11 @@
 
 ;(function(ns){
 
+  ns.showValidationMessages = false;
+  ns.validationMessageClass = "validation-message";
+  ns.validationErrorClass = "validation-error";
+
+
   ns.isValid = function(dom) {
     var isValid = true;
 
@@ -31,6 +36,7 @@
 
   function validate(input){
     var isValid = true;
+    var validationMessage = "";
 
     var validators = input.dataset;
     for (var validatorName in validators){
@@ -45,16 +51,38 @@
 
       if (!validatorSuccess && isValid) {
         isValid = false;
+        validationMessage = ns.validatorFunctions[validatorName].message;
       }
     }
 
     if (!isValid){
-      input.classList.add("validation-error");
+      input.classList.add(ns.validationErrorClass);
+
+      if (ns.showValidationMessages){
+        addValidationMessage(input, validationMessage);
+      }
     } else {
-      input.classList.remove("validation-error");
+      input.classList.remove(ns.validationErrorClass);
+
+      if (ns.showValidationMessages){
+        removeValidationMessage(input);
+      }
     }
 
     return isValid;
+  }
+
+  function addValidationMessage(input, message){
+    if (!input.nextElementSibling.classList.contains(ns.validationMessageClass)){
+      input.insertAdjacentHTML('afterend', "<div class='" + ns.validationMessageClass + "'>" + message + "</div>")
+    }
+  }
+
+  function removeValidationMessage(input){
+    var messageEle = input.nextElementSibling;
+    if (messageEle.classList.contains(ns.validationMessageClass)){
+      messageEle.parentNode.removeChild(messageEle);
+    }
   }
 
   function getInputs(dom){
