@@ -5,7 +5,6 @@ Javie is a vanilla javascript version of my other vaidation project [Kavie](http
 # Usage
 
 ```html
-
 <input type="text" data-required />
 
 <input type="button" id="submit" />
@@ -19,5 +18,20 @@ Javie is a vanilla javascript version of my other vaidation project [Kavie](http
     }
   }
 </script>
+```
 
+
+# Validation Methods
+Built in validation methods are as follows
+
+```html
+data-required
+data-numeric
+data-maxLength="12"
+data-minLength="3"
+data-matches="<regex>"
+data-date
+data-birthdate
+data-phone
+data-email
 ```
