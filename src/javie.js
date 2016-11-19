@@ -218,5 +218,4 @@
     return !(value == null || value.length === 0);
  }
 
-
 }(this.Javie = this.Javie || {}));
