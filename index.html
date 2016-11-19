@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <script src="javie.js"></script>
+
+  <style>
+    .validation-error{
+      border: solid 2px red;
+    }
+  </style>
+
+</head>
+<body>
+  <input type="text" data-required>
+  <input type="button" id="submit" value="Submit">
+
+  <script>
+    var submitButton = document.getElementById("submit");
+    submitButton.onclick = function(){
+      if (Javie.isValid(document)){
+        console.log("Valid");
+      } else {
+        console.log("Invalid");
+      }
+    }
+  </script>
+</body>
+</html>
