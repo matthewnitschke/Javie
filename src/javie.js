@@ -53,21 +53,23 @@
         isValid = false;
         validationMessage = ns.validatorFunctions[key].message;
       }
+
+      if (!isValid){
+        input.classList.add(ns.validationErrorClass);
+
+        if (ns.showValidationMessages){
+          addValidationMessage(input, validationMessage.replace("{propVal}", rules[key]));
+        }
+      } else {
+        input.classList.remove(ns.validationErrorClass);
+
+        if (ns.showValidationMessages){
+          removeValidationMessage(input);
+        }
+      }
     }
 
-    if (!isValid){
-      input.classList.add(ns.validationErrorClass);
 
-      if (ns.showValidationMessages){
-        addValidationMessage(input, validationMessage.replace("{propVal}", rules[key]));
-      }
-    } else {
-      input.classList.remove(ns.validationErrorClass);
-
-      if (ns.showValidationMessages){
-        removeValidationMessage(input);
-      }
-    }
 
     return isValid;
   }
@@ -155,7 +157,7 @@
      validator: function (propVal, eleVal){
        if (propVal && hasValue(eleVal)){
          // check to see if it is a valid date
-         if (!Kavie.validatorFunctions.date.validator(propVal, eleVal)) {
+         if (!Javie.validatorFunctions.date.validator(propVal, eleVal)) {
              return false;
          }
 
