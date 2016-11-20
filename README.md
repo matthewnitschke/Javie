@@ -27,8 +27,8 @@ Built in validation methods are as follows
 ```html
 data-required
 data-numeric
-data-maxLength="12"
-data-minLength="3"
+data-max-length="12"
+data-min-length="3"
 data-matches="<regex>"
 data-date
 data-birthdate
