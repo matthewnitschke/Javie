@@ -35,3 +35,12 @@ data-birthdate
 data-phone
 data-email
 ```
+
+# Options
+There are three configuration options currently availible in Javie. Each can be changed by simply accessing the public Javie object and setting them
+
+```javascirpt
+Javie.showValidationMessages = true; // default is false
+Javie.validationMessageClass = "error-message"; // default is 'validation-message'
+Javie.validationErrorClass = "error"; // default is 'validation-error'
+```
