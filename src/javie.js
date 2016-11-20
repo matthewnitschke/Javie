@@ -38,20 +38,20 @@
     var isValid = true;
     var validationMessage = "";
 
-    var validators = input.dataset;
-    for (var validatorName in validators){
-      if (!validators.hasOwnProperty(validatorName)) continue;
+    var rules = input.dataset;
+    for (var key in rules){
+      if (!rules.hasOwnProperty(key)) continue;
 
       // if the validator is empty eg data-required, set the property to true
-      if (!hasValue(validators[validatorName])){
-        validators[validatorName] = true;
+      if (!hasValue(rules[key])){
+        rules[key] = true;
       }
 
-      var validatorSuccess = ns.validatorFunctions[validatorName].validator(validators[validatorName], input.value);
+      var validatorSuccess = ns.validatorFunctions[key].validator(rules[key], input.value);
 
       if (!validatorSuccess && isValid) {
         isValid = false;
-        validationMessage = ns.validatorFunctions[validatorName].message;
+        validationMessage = ns.validatorFunctions[key].message;
       }
     }
 
@@ -59,7 +59,7 @@
       input.classList.add(ns.validationErrorClass);
 
       if (ns.showValidationMessages){
-        addValidationMessage(input, validationMessage);
+        addValidationMessage(input, validationMessage.replace("{propVal}", rules[key]));
       }
     } else {
       input.classList.remove(ns.validationErrorClass);
