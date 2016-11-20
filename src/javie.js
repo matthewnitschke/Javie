@@ -68,9 +68,6 @@
         }
       }
     }
-
-
-
     return isValid;
   }
 
@@ -82,7 +79,7 @@
 
   function removeValidationMessage(input){
     var messageEle = input.nextElementSibling;
-    if (messageEle.classList.contains(ns.validationMessageClass)){
+    if (messageEle.classList.contains(ns.validationMessageClass)) {
       messageEle.parentNode.removeChild(messageEle);
     }
   }
